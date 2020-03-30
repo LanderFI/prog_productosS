@@ -12,12 +12,12 @@ import modelo.Conector;
 
 public class ModeloProducto extends Conector {
 
-	public ArrayList<Producto> getAll(){
+	public ArrayList<Producto> selectAll(){
 		ArrayList<Producto> productos = new ArrayList<Producto>();
 		
 		try {
 			Statement st = super.conexion.createStatement();
-			ResultSet rs = st.executeQuery("select * from libros");
+			ResultSet rs = st.executeQuery("select * from productos");
 			while(rs.next()) {
 				Producto producto = new Producto();
 				producto.setId(rs.getInt("id"));
