@@ -42,9 +42,9 @@
           <c:forEach items="${productos }" var="producto">
           
             <tr>
-              <td>${producto.nombre() }</td>
-              <td>${producto.stock() }</td>
-              <td>${producto.tallas() }</td>
+              <td>${producto.getNombre()}</td>
+              <td>${producto.getStock() }</td>
+              <td>${producto.getTallas() }</td>
               <td>
                 <a class="btn btn-danger" href="">
                   <svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
