@@ -1,6 +1,7 @@
 package modelo.dao;
 
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,7 +36,7 @@ public class ModeloProducto extends Conector {
 			}
 			return productos;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -70,7 +71,7 @@ public class ModeloProducto extends Conector {
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -78,7 +79,24 @@ public class ModeloProducto extends Conector {
 	}
 	
 	public void insert(Producto producto) {
-		//TODO implementar
+		try {
+			PreparedStatement pst = super.conexion.prepareStatement("insert into productos (nombre, stock, fecha_compra, color, made_in, precio, descuento, tallas) "
+					+ " values (?, ?, ?, ?, ?, ?, ?, ?)");
+			pst.setString(1, producto.getNombre());
+			pst.setInt(2, producto.getStock());
+			pst.setDate(3, (Date) producto.getFecha_compra());
+			pst.setString(4, producto.getColor());
+			pst.setString(5, producto.getMade_in());
+			pst.setDouble(6, producto.getPrecio());
+			pst.setInt(7, producto.getDescuento());
+			pst.setString(8, producto.getTallas());
+			
+			pst.execute();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 	}
 	
 	public void update(Producto producto) {
@@ -92,7 +110,7 @@ public class ModeloProducto extends Conector {
 			pst.execute();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
