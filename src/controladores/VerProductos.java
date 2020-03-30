@@ -32,7 +32,7 @@ public class VerProductos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ModeloProducto mProducto = new ModeloProducto();
-		ArrayList<Producto> productos = mProducto.getAll();
+		ArrayList<Producto> productos = mProducto.selectAll();
 		
 		request.setAttribute("productos", productos);
 		
