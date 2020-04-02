@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.dao.ModeloDescuento;
+import modelo.dao.ModeloEstado;
+import modelo.dao.ModeloTalla;
+
 /**
  * Servlet implementation class CrearProducto
  */
@@ -26,6 +30,15 @@ public class CrearProducto extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ModeloEstado mEstado = new ModeloEstado();
+		ModeloTalla mTalla = new ModeloTalla();
+		ModeloDescuento mDescuento = new ModeloDescuento();
+		
+		request.setAttribute("estados", mEstado.getAll());
+		request.setAttribute("tallas", mTalla.getAll());
+		request.setAttribute("descuentos", mDescuento.getAll());
+		
+		
 		request.getRequestDispatcher("CrearProducto.jsp").forward(request, response);
 	}
 
