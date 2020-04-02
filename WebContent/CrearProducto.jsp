@@ -28,7 +28,7 @@
     </nav>
     <div class="row">
       <div class="col-8">
-        <form>
+        <form action="InsertarProducto" method="POST">
           <div class="mb-3">
             <div class="form-group">
               <label for="nombre">Nombre</label>
@@ -62,13 +62,10 @@
               <label for="madein">Made in</label>
               <select id="madein" name="madein" class="form-control">
                 <option>Choose...</option>
-                <option value="Afganistan">Afganistan</option>
-                <option value="Argelia">Argelia</option>
-                <option value="Australia">Australia</option>
-                <option value="Bangladesh">Bangladesh</option>
-                <option value="Belarus">Belarus</option>
-                <option value="...">...</option>
-                <option value="todos los de la tabla estados">todos los de la tabla estados</option>
+                
+               <c:forEach items="${estados}" var="estado">
+               <option value="${estado.getName()}">${estado.getContinent() } : ${estado.getName()}</option>
+               </c:forEach>
               </select>
             </div>
           </div>
@@ -81,55 +78,29 @@
             </div>
           </div>
 
-          <div class="mb-3">
+         <div class="mb-3">
             Descuento
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="descuento" id="descuento0" value="0" checked>
-              <label class="form-check-label" for="descuento0">
-                0% (por defecto)
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="descuento" id="descuento10" value="10">
-              <label class="form-check-label" for="descuento10">
-                10%
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="descuento" id="descuento30" value="30">
-              <label class="form-check-label" for="descuento30">
-                30%
-              </label>
-            </div>
-
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="descuento" id="" value="">
-              <label class="form-check-label" for="">
-                Todos de la tabla descuentos
-              </label>
-            </div>
+            <c:forEach items="${descuentos }" var="descuento">
+	             <div class="form-check">
+		              <input class="form-check-input" type="radio" name="descuento" id="descuento${descuento.getValor()}" value="${descuento.getValor()}">
+		              <label class="form-check-label" for="descuento${descuento.getValor()}">
+		                ${descuento.getDescripcion()}
+		              </label>
+	            </div>
+            </c:forEach>
+          
           </div>
 
           <div class="mb-3">
             <div class="">Tallas</div>
+            <c:forEach items="${tallas}" var="talla">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="descuento" id="tallaS" value="S">
+              <input class="form-check-input" type="checkbox" name="descuento" id="talla${talla.getNombre()}" value="${talla.getNombre()}">
               <label class="form-check-label" for="tallaS">
-                S
+                ${talla.getNombre()}
               </label>
             </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="descuento" id="tallaM" value="M">
-              <label class="form-check-label" for="tallaM">
-                M
-              </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="descuento" id="tallaL" value="L">
-              <label class="form-check-label" for="tallaL">
-                L
-              </label>
-            </div>
+            </c:forEach>
 
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox" name="descuento" id="" value="">
@@ -138,7 +109,7 @@
               </label>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" href="VerProductos">Guardar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
           <div class="mt-2"><a href="VerProductos" class="btn btn-warning">Cancelar</a></div>
         </form>
       </div>
