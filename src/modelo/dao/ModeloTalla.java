@@ -14,7 +14,7 @@ public class ModeloTalla extends Conector{
 		ArrayList<Talla> tallas = new ArrayList<Talla>();
 		
 		try {
-			PreparedStatement pst = super.conexion.prepareStatement("select * from descuentos");
+			PreparedStatement pst = super.conexion.prepareStatement("select * from tallas");
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
 				Talla talla = new Talla();
