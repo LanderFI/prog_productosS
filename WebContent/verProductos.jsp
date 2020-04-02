@@ -22,7 +22,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Productos</li>
-        <li class="breadcrumb-item"><a href="CrearProducto?id=${producto.getId() }">Nuevo</a></li>
+        <li class="breadcrumb-item"><a href="CrearProducto">Nuevo</a></li>
       </ol>
     </nav>
     <div class="row">
