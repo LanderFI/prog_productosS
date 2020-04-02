@@ -84,7 +84,7 @@ public class ModeloProducto extends Conector {
 					+ " values (?, ?, ?, ?, ?, ?, ?, ?)");
 			pst.setString(1, producto.getNombre());
 			pst.setInt(2, producto.getStock());
-			pst.setDate(3, (Date) producto.getFecha_compra());
+			pst.setDate(3,  (Date) producto.getFecha_compra());
 			pst.setString(4, producto.getColor());
 			pst.setString(5, producto.getMade_in());
 			pst.setDouble(6, producto.getPrecio());

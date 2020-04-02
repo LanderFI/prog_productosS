@@ -1,8 +1,8 @@
 package modelo.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.Conector;
@@ -14,16 +14,16 @@ public class ModeloTalla extends Conector{
 		ArrayList<Talla> tallas = new ArrayList<Talla>();
 		
 		try {
-			Statement st = super.conexion.createStatement();
-			ResultSet rs = st.executeQuery("select * from tallas");
+			PreparedStatement pst = super.conexion.prepareStatement("select * from descuentos");
+			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
 				Talla talla = new Talla();
 				talla.setId(rs.getInt("id"));
-				talla.setNombre("nombre");
+				talla.setNombre(rs.getString("nombre"));
 				
 				tallas.add(talla);
 			}
-			return tallas;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

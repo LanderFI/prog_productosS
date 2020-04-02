@@ -1,8 +1,8 @@
 package modelo.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.Conector;
@@ -14,17 +14,17 @@ public class ModeloEstado extends Conector{
 		ArrayList<Estado> estados = new ArrayList<Estado>();
 		
 		try {
-			Statement st = super.conexion.createStatement();
-			ResultSet rs = st.executeQuery("select * from estados");
+			PreparedStatement pst = super.conexion.prepareStatement("select * from estados");
+			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
 				Estado estado = new Estado();
 				estado.setId(rs.getInt("id"));
-				estado.setName("name");
-				estado.setContinent("continent");
+				estado.setName(rs.getString("name"));
+				estado.setContinent(rs.getString("continent"));
 				
 				estados.add(estado);
 			}
-			return estados;
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
