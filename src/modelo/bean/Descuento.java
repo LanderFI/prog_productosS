@@ -3,7 +3,7 @@ package modelo.bean;
 public class Descuento {
 	private int id;
 	private int valor;
-	private String descripion;
+	private String descripcion;
 
 	public int getId() {
 		return id;
@@ -21,17 +21,19 @@ public class Descuento {
 		this.valor = valor;
 	}
 
-	public String getDescripion() {
-		return descripion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setDescripion(String descripion) {
-		this.descripion = descripion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	@Override
 	public String toString() {
-		return "Descuento [id=" + id + ", valor=" + valor + ", descripion=" + descripion + "]";
+		return "Descuento [id=" + id + ", valor=" + valor + ", descripcion=" + descripcion + "]";
 	}
+
+	
 
 }
