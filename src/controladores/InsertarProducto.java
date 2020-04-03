@@ -40,32 +40,36 @@ public class InsertarProducto extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nombre = request.getParameter("nombre");
-		int stock = Integer.parseInt(request.getParameter("stock"));
-		Date fecha_compra = null;
 		
+		
+		Date fecha = null;
+		String nombre = request.getParameter("nombre");
+		String stockS = request.getParameter("stock");
+		int stock = Integer.parseInt(stockS);
+		String fecha_string = request.getParameter("fechaCompra");
 		String color = request.getParameter("color");
 		String made_in = request.getParameter("made_in");
-		Double precio = Double.parseDouble(request.getParameter("precio"));
+		String precioS = request.getParameter("precio");
+		Double precio = Double.parseDouble(precioS);
 		int descuento = Integer.parseInt(request.getParameter("descuento"));
-		String tallas = request.getParameter("tallas");
+		String [] tallas = request.getParameterValues("talla");
 		
 		
 		Producto producto = new Producto();
 		
 		producto.setNombre(nombre);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		
 		try {
-			fecha_compra = sdf.parse(request.getParameter("fecha_compra"));
+			fecha = formato.parse(fecha_string);
 		} catch (ParseException e) {
 			
 			e.printStackTrace();
 		}
 		
 		
-		producto.setFecha_compra(fecha_compra);
+		producto.setFecha_compra(fecha);
 		producto.setStock(stock);
 		producto.setColor(color);
 		producto.setMade_in(made_in);
