@@ -36,7 +36,6 @@ public class VerProducto extends HttpServlet {
 		
 		
 		request.setAttribute("producto", producto);
-		
 		request.getRequestDispatcher("VerProducto.jsp").forward(request, response);
 	}
 
