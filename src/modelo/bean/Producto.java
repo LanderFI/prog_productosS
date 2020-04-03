@@ -1,5 +1,6 @@
 package modelo.bean;
 
+import java.sql.Array;
 import java.util.Date;
 
 public class Producto {
@@ -62,11 +63,20 @@ public class Producto {
 	public void setDescuento(int descuento) {
 		this.descuento = descuento;
 	}
-	public String getTallas() {
-		return tallas;
-	}
 	public void setTallas(String tallas) {
 		this.tallas = tallas;
+	}
+	public void setTallas(String[] tallas) {
+		String cadena = "";
+		
+		if(tallas!=null) {
+			for (int i = 0; i < tallas.length-1; i++) {
+				cadena = cadena + tallas[i]+",";
+			}
+			cadena = cadena + tallas[tallas.length-1];
+		}
+		
+		this.tallas = cadena;
 	}
 	@Override
 	public String toString() {
@@ -74,6 +84,11 @@ public class Producto {
 				+ ", color=" + color + ", made_in=" + made_in + ", precio=" + precio + ", descuento=" + descuento
 				+ ", tallas=" + tallas + "]";
 	}
+	public String getTallas() {
+		return tallas;
+	}
+	
+	
 	
 	
 }
