@@ -32,12 +32,12 @@
   <tbody>
   
     <tr>
-      <th scope="row">${producto.getId() }</th>
+      <th scope="row">${producto.getId()}</th>
      	<td>${producto.getNombre()}</td>
      	<td>${producto.getStock() }</td>
      	<td>${producto.getFecha_compra()}</td>
-      	<td>${producto.getColor() }</td>
-      	<td>${producto.getMade_in() }</td>
+      	<td>${producto.getColor()}</td>
+      	<td>${producto.getMade_in()}</td>
       	<td>${producto.getPrecio()}</td>
       	<td>${producto.getDescuento()}</td>
       	<td>${producto.getTallas()}</td>
