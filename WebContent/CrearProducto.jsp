@@ -46,7 +46,7 @@
           <div class="mb-3">
             <div class="form-group">
               <label for="fechaCompra">Fecha de compra</label>
-              <input type="date" class="form-control" id="fechaCompra" name="fechaCompra">
+              <input type="date" class="form-control" id="fechaCompra" name="fechaCompra" >
             </div>
           </div>
 
@@ -95,7 +95,7 @@
             <div class="">Tallas</div>
             <c:forEach items="${tallas}" var="talla">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" name="descuento" id="talla${talla.getNombre()}" value="${talla.getNombre()}">
+              <input class="form-check-input" type="checkbox" name="tallas" id="talla${talla.getNombre()}" value="${talla.getNombre()}">
               <label class="form-check-label" for="tallaS">
                 ${talla.getNombre()}
               </label>
