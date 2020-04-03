@@ -65,7 +65,7 @@ public class ModeloProducto extends Conector {
 				producto.setMade_in(rs.getString("made_in"));
 				producto.setPrecio(rs.getDouble("precio"));
 				producto.setDescuento(rs.getInt("descuento"));
-				producto.setTallas(rs.getString("tallas"));
+				producto.setTallas(rs.getNString("tallas"));
 				
 				return producto;
 				
@@ -84,7 +84,7 @@ public class ModeloProducto extends Conector {
 					+ " values (?, ?, ?, ?, ?, ?, ?, ?)");
 			pst.setString(1, producto.getNombre());
 			pst.setInt(2, producto.getStock());
-			pst.setDate(3,  (Date) producto.getFecha_compra());
+			pst.setDate(3, new java.sql.Date(producto.getFecha_compra().getTime()));
 			pst.setString(4, producto.getColor());
 			pst.setString(5, producto.getMade_in());
 			pst.setDouble(6, producto.getPrecio());
