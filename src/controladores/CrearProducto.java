@@ -12,7 +12,7 @@ import modelo.dao.ModeloEstado;
 import modelo.dao.ModeloTalla;
 
 /**
- * Servlet implementation class CrearProducto
+ * Servlet implementation class NuevoProcucto
  */
 @WebServlet("/CrearProducto")
 public class CrearProducto extends HttpServlet {
@@ -34,10 +34,9 @@ public class CrearProducto extends HttpServlet {
 		ModeloTalla mTalla = new ModeloTalla();
 		ModeloDescuento mDescuento = new ModeloDescuento();
 		
-		request.setAttribute("estados", mEstado.getAll());
-		request.setAttribute("tallas", mTalla.getAll());
 		request.setAttribute("descuentos", mDescuento.getAll());
-		
+		request.setAttribute("tallas", mTalla.getAll());
+		request.setAttribute("estados", mEstado.getAll());
 		
 		request.getRequestDispatcher("CrearProducto.jsp").forward(request, response);
 	}
