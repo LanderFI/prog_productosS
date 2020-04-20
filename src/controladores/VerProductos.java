@@ -1,15 +1,12 @@
 package controladores;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.bean.Producto;
 import modelo.dao.ModeloProducto;
 
 /**
@@ -32,10 +29,8 @@ public class VerProductos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ModeloProducto mProducto = new ModeloProducto();
-		ArrayList<Producto> productos = mProducto.selectAll();
 		
-		request.setAttribute("productos", productos);
-		
+		request.setAttribute("productos", mProducto.selectAll());
 		request.getRequestDispatcher("verProductos.jsp").forward(request, response);
 	}
 
