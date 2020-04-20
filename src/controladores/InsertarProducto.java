@@ -33,57 +33,56 @@ public class InsertarProducto extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		ModeloProducto mProducto = new ModeloProducto(); // crear un ojbeto de la clase Modelo Producto
+		// Recuperar mediante request.getParameter los valores del formulario
 		Date fecha = null;
-		String nombre = request.getParameter("nombre");
+		String nombre=request.getParameter("nombre");
+
 		String stockS = request.getParameter("stock");
-		int stock = Integer.parseInt(stockS);
-		String fecha_string = request.getParameter("fechaCompra");
-		String color = request.getParameter("color");
-		String made_in = request.getParameter("made_in");
-		String precioS = request.getParameter("precio");
-		Double precio = Double.parseDouble(precioS);
-		int descuento = Integer.parseInt(request.getParameter("descuento"));
-		String [] tallas = request.getParameterValues("talla");
-		
-		
-		Producto producto = new Producto();
-		
-		producto.setNombre(nombre);
-		
+		int stock=Integer.parseInt(stockS);
+
+		String fechaString = request.getParameter("fechaCompra");
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		
 		try {
-			fecha = formato.parse(fecha_string);
+			fecha = formato.parse(fechaString);
 		} catch (ParseException e) {
-			
 			e.printStackTrace();
 		}
 		
+		String color=request.getParameter("color");
+		String made_in=request.getParameter("madein");
+		String precioS = request.getParameter("precio");
+		Double precio=Double.parseDouble(precioS);
+		String descuentoS = request.getParameter("descuento");
+		int descuento=Integer.parseInt(descuentoS);
+
+		String[] tallas = request.getParameterValues("talla");
 		
-		producto.setFecha_compra(fecha);
+
+		// crear un producto con los datos del formulario
+		Producto producto=new Producto();
+		producto.setNombre(nombre);
 		producto.setStock(stock);
-		producto.setColor(color);
-		producto.setMade_in(made_in);
-		producto.setPrecio(precio);
-		producto.setDescuento(descuento);
-		producto.setTallas(tallas);
-		
-		
-		ModeloProducto mProducto = new ModeloProducto();
-		
+		   producto.setFecha_compra(fecha);
+		   producto.setColor(color);
+		   producto.setMade_in(made_in);
+		   producto.setPrecio(precio);
+		   producto.setDescuento(descuento);
+		   producto.setTallas(tallas);      
+		 
+		   //insertar producto
 		mProducto.insert(producto);
 		
 		response.sendRedirect("VerProductos");
-		
 	}
 
 }
