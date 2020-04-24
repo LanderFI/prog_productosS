@@ -2,6 +2,8 @@ package api;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import modelo.bean.Producto;
@@ -53,7 +56,16 @@ public class ApiCreateProducto extends HttpServlet {
 		Producto producto = new Producto();
 		producto.setNombre(jsonObject.getString("nombre"));
 		producto.setStock(jsonObject.getInt("stock"));
-		producto.setFecha_compra((Date) jsonObject.get("fechaCompra"));
+		Date fecha = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		try {
+			fecha=sdf.parse(jsonObject.getString("fechaCompra"));
+		} catch (JSONException | ParseException e1) {
+			e1.printStackTrace();
+		}
+		
+		producto.setFecha_compra(fecha);
 		producto.setColor(jsonObject.getString("color"));
 		producto.setMade_in(jsonObject.getString("madein"));
 		producto.setPrecio(jsonObject.getDouble("precio"));
